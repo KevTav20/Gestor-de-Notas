@@ -1,4 +1,4 @@
-{% extends 'base_generic.html' %}
+{% extends 'notes/base_generic.html'  %}
 
 {% block content %}
   <h2>Crear Nueva Nota para {{ user.name }}</h2>
@@ -15,5 +15,5 @@
   </form>
 
   <br>
-  <a href="{% url 'notes_TaveraMujica:index' user.id %}">Volver a la lista de notas</a>
+  <a href="{% url 'notes_TaveraMujica:list' user.id %}">Volver a la lista de notas</a>
 {% endblock %}

@@ -1,18 +1,35 @@
-{% extends 'base_generic.html' %}
+<fieldset>
+    <legend>
+        <h1>Notas de {{ user.name }}</h1>
+    </legend>
+    {% if error_message %}
+        <p>
+            <strong>{{ error_message }}</strong>
+        </p>
+    {% endif %}
 
-{% block content %}
-  <h2>Notas de {{ user.name }}</h2>
-  <ul>
-    {% for note in notes %}
-      <li>
-        <a href="{% url 'notes_TaveraMujica:detail' user.id note.id %}">
-          {{ note.title }}
-        </a>
-      </li>
-    {% empty %}
-      <li>No hay notas para este usuario.</li>
-    {% endfor %}
-  </ul>
+    <a href="{% url 'notes_TaveraMujica:create' user.id %}">
+        <button type="button">Crear Nota</button>
+    </a>
 
-  <a href="{% url 'notes_TaveraMujica:create' user.id %}">Crear nueva nota</a>
-{% endblock %}
+    <ul>
+        {% for note in notes %}
+            <li>
+                {{ note.title }}
+                <a href="{% url 'notes_TaveraMujica:edit' user.id note.id %}">
+                    <button type="button">Editar</button>
+                </a>
+                <a href="{% url 'notes_TaveraMujica:detail' user.id note.id %}">
+                    <button type="button">Detalles</button>
+                </a>
+                <form action="{% url 'notes_TaveraMujica:delete' user.id note.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="_method" value="POST">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No hay notas para este usuario.</li>
+        {% endfor %}
+    </ul>
+</fieldset>

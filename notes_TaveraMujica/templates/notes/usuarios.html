@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+</head>
+<body>
+{% if lista_usuarios%}
+<ul>
+    {% for usuario in lista_usuarios%}
+    <li>
+        <a href="{% url 'notes_TaveraMujica:list' user.id %}">{{ usuario.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+    {% else %}
+    <p>No hay usuarios disponibles.</p>
+{% endif %}
+
+</body>
+</html>
