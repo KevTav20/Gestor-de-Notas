@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_generic.html' %}
 
-</body>
-</html>
+{% block content %}
+  <h2>Notas de {{ user.name }}</h2>
+  <ul>
+    {% for note in notes %}
+      <li>
+        <a href="{% url 'notes_TaveraMujica:detail' user.id note.id %}">
+          {{ note.title }}
+        </a>
+      </li>
+    {% empty %}
+      <li>No hay notas para este usuario.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'notes_TaveraMujica:create' user.id %}">Crear nueva nota</a>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Notas{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1>{% block header %}Sistema de Notas{% endblock %}</h1>
+  </header>
+
+  <main>
+    {% block content %}
+    <!-- Contenido de cada vista irá aquí -->
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>Desarrollado por Kevin Tavera Mujica</p>
+  </footer>
+</body>
+</html>

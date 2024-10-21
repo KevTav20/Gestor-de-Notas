@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_generic.html' %}
 
-</body>
-</html>
+{% block content %}
+  <h2>Editar Nota "{{ note.title }}" de {{ user.name }}</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    <label for="title">Título:</label>
+    <input type="text" name="title" value="{{ note.title }}"><br><br>
+
+    <label for="content">Contenido:</label>
+    <textarea name="content">{{ note.content }}</textarea><br><br>
+
+    <button type="submit">Actualizar</button>
+  </form>
+
+  <br>
+  <a href="{% url 'notes_TaveraMujica:detail' user.id note.id %}">Volver al detalle de la nota</a>
+{% endblock %}

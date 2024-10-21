@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_generic.html' %}
 
-</body>
-</html>
+{% block content %}
+  <h2>Crear Nueva Nota para {{ user.name }}</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    <label for="title">Título:</label>
+    <input type="text" name="title" placeholder="Ingrese el título de la nota"><br><br>
+
+    <label for="content">Contenido:</label>
+    <textarea name="content" placeholder="Escriba el contenido de la nota"></textarea><br><br>
+
+    <button type="submit">Crear</button>
+  </form>
+
+  <br>
+  <a href="{% url 'notes_TaveraMujica:index' user.id %}">Volver a la lista de notas</a>
+{% endblock %}
