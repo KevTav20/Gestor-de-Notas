@@ -1,4 +1,4 @@
-# Práctica con Django: Gestor de Notas
+# Gestor de Notas
 
 ## Objetivo
 Iniciar un proyecto en Django personalizado con los apellidos de la pareja asignada. Este proyecto permitirá gestionar notas para cada usuario autenticado en el sistema.
